@@ -1,30 +1,30 @@
-# Checkson self check for Google PubSub integration
+# Checkson self check for Checkson CLI
 
-This check is used to monitor Checkson itself. It checks if a message can be sent to Google PubSub and that
-this message is received by the relevant service within the Checkson backend.
-
-This check is likely not useful to anyone else, except as an example.
+This check is used to monitor if the most recent version of [Checkson CLI](https://github.com/checkson-io/checkson-cli)
+works and can communicate with the backend.
 
 ## Environment variables
 
-| Variable           | Description |
-|------------------- |-------------|
-| `CHECK_API_SECRET` | The secret to use for sending the message |
+| Variable                | Description |
+|------------------------ |-------------|
+| `VERSION`               | The version of the CLI to test |
+| `PERSONAL_ACCESS_TOKEN` | The personal access token to login with |
 
 ## Use check on Checkson
 
 This check can be used on [checkson.io](https://checkson.io) (or anywhere else) with the following Docker image:
 
 ```
-ghcr.io/checkson-io/checkson-pubsub-self-check:main
+ghcr.io/checkson-io/checkson-cli-self-check:main
 ```
 
 ## Run check locally
 
 ```
 docker run \
-  --env CHECK_API_SECRET=xyz123 \
+  --env VERSION=1.0.0 \
+  --env PERSONAL_ACCESS_TOKEN=abc123 \
   --rm \
   -it \
-  ghcr.io/checkson-io/checkson-pubsub-self-heck:main
+  ghcr.io/checkson-io/checkson-cli-self-heck:main
 ```
